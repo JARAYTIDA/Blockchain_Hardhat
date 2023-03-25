@@ -1,0 +1,34 @@
+Arguments: 
+  /home/aditya/.nvm/versions/node/v19.4.0/bin/node /home/aditya/.cache/node/corepack/yarn/1.22.19/bin/yarn.js add --dev hardhat
+
+PATH: 
+  /home/aditya/.local/bin:/home/aditya/.nvm/versions/node/v19.4.0/bin:/home/aditya/miniconda3/bin:/home/aditya/miniconda3/condabin:/home/aditya/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin
+
+Yarn version: 
+  1.22.19
+
+Node version: 
+  19.4.0
+
+Platform: 
+  linux x64
+
+Trace: 
+  Error: getaddrinfo EAI_AGAIN registry.yarnpkg.com
+      at GetAddrInfoReqWrap.onlookup [as oncomplete] (node:dns:107:26)
+
+npm manifest: 
+  {
+    "name": "Blockchain_Hardhat",
+    "version": "1.0.0",
+    "main": "index.js",
+    "repository": "git@github.com:JARAYTIDA/Blockchain_Hardhat.git",
+    "author": "JARAYTIDA <rajadityakumawat@gmail.com>",
+    "license": "MIT"
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
