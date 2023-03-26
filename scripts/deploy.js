@@ -10,7 +10,11 @@ async function main() {
   await simpleStorage.deployed();
 
   console.log(`Deployed contract to : ${simpleStorage.address}`);
-  console.log(network.config);
+  // console.log(network.config);
+  if(network.config.chainId == 80001 && process.env.ETHERSCAN_API_KEY){
+    await simpleStorage.deployTransaction.wait(6);
+    await varify(simpleStorage.address, []);
+  }
 }
 
 async function varify(contractAddress, args){
@@ -22,7 +26,7 @@ async function varify(contractAddress, args){
     constructorArguments: args,
   })
   } catch (e) {
-    if(e.message.toLower().include("already verified")){
+    if(e.message.toLowerCase().includes("already verified")){
       console.log("Already verified");
     }
     else{
