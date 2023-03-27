@@ -1,18 +1,19 @@
-//imports
-const {ethers, run, network} = require("hardhat"); 
+const {ethers, network, run} = require("hardhat");
+require("dotenv").config();
 
-//main function 
 async function main() {
-
   const SimpleStorageFactory = await ethers.getContractFactory("SimpleStorage");
-  console.log("deploying contract ......");
+  console.log("deploying contract .....")
   const simpleStorage = await SimpleStorageFactory.deploy();
   await simpleStorage.deployed();
+  // await simpleStorage.deployTransaction.wait(6);
+  console.log(`contract deployed to address : ${simpleStorage.address}`);
+  console.log(`contract deployed to network : ${network.name}`);
 
-  console.log(`Deployed contract to : ${simpleStorage.address}`);
-  // console.log(network.config);
-  if(network.config.chainId == 80001 && process.env.ETHERSCAN_API_KEY){
+  if(network.config.chainId == 80001 && process.env.POLYGON_MUMBAI_API){
+    console.log("waiting for blocks confirmation ..... ");
     await simpleStorage.deployTransaction.wait(6);
+    console.log("-------deployment confirmed--------")
     await varify(simpleStorage.address, []);
   }
 }
@@ -35,7 +36,7 @@ async function varify(contractAddress, args){
   }
 }
 
-//call function
+
 main().then(() => process.exit(0)).catch((error) => {
   console.error(error);
   process.exit(1);

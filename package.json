@@ -1,7 +1,6 @@
 {
   "name": "Blockchain_Hardhat",
   "version": "1.0.0",
-  "main": "index.js",
   "repository": "git@github.com:JARAYTIDA/Blockchain_Hardhat.git",
   "author": "JARAYTIDA <rajadityakumawat@gmail.com>",
   "license": "MIT",
