@@ -2,12 +2,15 @@ require("@nomicfoundation/hardhat-toolbox");
 require("dotenv").config();
 require("@nomiclabs/hardhat-etherscan");
 require("./tasks/block-number")
+require("hardhat-gas-reporter");
+require("solidity-coverage");
 
 /** @type import('hardhat/config').HardhatUserConfig */
 
 PRIVATE_KEY = process.env.PRIVATE_KEY;
 POLYGON_MUMBAI_RPC  = process.env.POLYGON_MUMBAI_RPC;
 POLYGON_MUMBAI_API = process.env.POLYGON_MUMBAI_API;
+COINMARKETCAP_API_KEY = process.env.COINMARKETCAP_API_KEY;
 
 
 module.exports = {
@@ -29,5 +32,13 @@ module.exports = {
 
   etherscan : {
     apiKey : POLYGON_MUMBAI_API,
+  },
+  gasReporter : {
+    enabled : true,
+    outputFile: "gas-report.txt",
+    currency: "INR",
+    noColors: true,
+    coinmarketcap: COINMARKETCAP_API_KEY,
+    token: "BTC",
   },
 };
