@@ -16,8 +16,23 @@ async function main() {
     console.log("-------deployment confirmed--------")
     await varify(simpleStorage.address, []);
   }
+
+  // console.log("");
+
+  // interacting with the contract
+  console.log("\n-----------\ndone varifying\n-----------");
+  const currentValue = await simpleStorage.retrieve();
+  console.log(`\ncurrent value is : ${currentValue}`);
+
+  // updatign the current value
+  const transactionValue = await simpleStorage.store(800);
+  await transactionValue.wait(1);
+  const updatedValue = await simpleStorage.retrieve();
+  console.log(`updated value is : ${updatedValue}`);
 }
 
+// these function notation and making function a variable, both are same for the purpose of this course
+// const varify = async(contractAddress, args) => {}
 async function varify(contractAddress, args){
   console.log("verifying contract ......");
 
