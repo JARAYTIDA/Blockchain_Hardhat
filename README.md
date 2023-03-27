@@ -12,6 +12,92 @@ npx hardhat node
 npx hardhat run scripts/deploy.js
 ```
 
+# Uages
+
+## deploy
+```
+npx hardhat run scripts/deploy.js
+```
+```
+yarn hardhat run scripts/deploy.js
+```
+## testing 
+```
+npx hardhat test
+```
+```
+yarn hardhat test
+```
+## test coverage
+```
+npx hardhat coverage
+```
+```
+yarn hardhat coverage
+```
+
+## Estimate gas 
+You can estimate how much gas things cost by running:
+```
+npx hardhat test
+```
+```
+yarn hardhat test
+```
+And you'll see and output file called `gas-report.txt`
+
+## Local deployment
+If you'd like to run your own local hardhat network, you can run:
+```
+npx hardhat node
+```
+```
+yarn hardhat node
+```
+And then in a **different terminal**
+
+```
+npx hardhat run scripts/deploy.js --network localhost
+```
+```
+yarn hardhat run scripts/deploy.js --network localhost
+```
+And you should see transactions happen in your terminal that is running `npx hardhat node` or `yarn hardhat node`
+
+### Important localhost note
+If you use metamask with a local network, everytime you shut down your node, you'll need to reset your account. Settings -> Advanced -> Reset account. Don't do this with a metamask you have real funds in. And maybe don't do this if you're a little confused by this.
+
+## Deployment to a testnet or mainnet
+1. Deployment to a testnet or mainnet
+You'll want to set your `SEPOLIA_RPC_URL` and `PRIVATE_KEY` as environment variables. You can add them to a `.env` file, similar to what you see in `.env.example.`
+ * `PRIVATE_KEY`: The private key of your account (like from metamask). NOTE: FOR DEVELOPMENT, PLEASE USE A KEY THAT DOESN'T HAVE ANY REAL FUNDS ASSOCIATED WITH IT.
+ * `SEPOLIA_RPC_URL`: This is url of the sepolia testnet node you're working with. You can get setup with one for free from Alchemy
+
+ 2. Get testnet ETH
+ Head over to faucets.chain.link and get some tesnet ETH. You should see the ETH show up in your metamask.
+ 3. Deploy
+ ```
+ npx hardhat run scripts/deploy.js --network polygon
+ ```
+ ```
+ yarn hardhat run scripts/deploy.js --network polygon
+ ``` 
+
+### Verify on etherscan
+
+If you deploy to a testnet or mainnet, you can verify it if you get an API Key from Etherscan and set it as an environment variable named `ETHERSCAN_API_KEY`. You can pop it into your `.env` file as seen in the `.env.example`.
+
+In it's current state, if you have your api key set, it will auto verify sepolia contracts!
+
+However, you can manual verify with:
+
+```
+npx hardhat verify --constructor-args arguments.js DEPLOYED_CONTRACT_ADDRESS
+```
+```
+yarn hardhat verify --constructor-args arguments.js DEPLOYED_CONTRACT_ADDRESS
+```
+
 # Working With local Console
 
 ``` Working With local Console
